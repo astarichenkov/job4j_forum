@@ -16,7 +16,7 @@
 
 <body>
 <div class="container pt-3">
-    <form action="<%=request.getContextPath()%>/update" method='POST'>
+    <form action="<%=request.getContextPath()%>/save?id=${post.id}" method='POST'>
         <div class="mb-3">
             <label for="name" class="form-label">Имя</label>
             <input type="text" class="form-control" name="name" id="name" value="${post.name}">

@@ -2,37 +2,27 @@ package ru.job4j.forum.service;
 
 import org.springframework.stereotype.Service;
 import ru.job4j.forum.model.Post;
+import ru.job4j.forum.repository.PostMemRepository;
 
-import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 @Service
 public class PostService {
-    private int id;
-    private final List<Post> posts = new ArrayList<>();
+    private final PostMemRepository posts;
 
-    public PostService() {
+    public PostService(PostMemRepository posts) {
+        this.posts = posts;
     }
 
     public List<Post> findAll() {
-        return posts;
+        return posts.findAll();
     }
 
-    public Post findById(int id) {
-        return posts.get(id);
+    public Post findById(long id) {
+        return posts.findById(id);
     }
 
     public Post save(Post post) {
-        post.setId(id++);
-        post.setCreated(new GregorianCalendar());
-        posts.add(post);
-        return post;
-    }
-
-    public Post update(Post post) {
-        post.setCreated(new GregorianCalendar());
-        posts.set(post.getId(), post);
-        return post;
+        return posts.save(post);
     }
 }

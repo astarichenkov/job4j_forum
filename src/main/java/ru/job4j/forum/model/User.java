@@ -11,7 +11,7 @@ import java.util.Objects;
 @ToString
 public class User {
 
-    private Integer id;
+    private long id;
 
     @NonNull
     private String username;

@@ -12,7 +12,7 @@ import java.util.Objects;
 @ToString
 public class Post {
 
-    private Integer id;
+    private long id;
 
     @NonNull
     private String name;
@@ -28,9 +28,7 @@ public class Post {
             return false;
         }
         Post post = (Post) o;
-        return id == post.id
-                && Objects.equals(name, post.name)
-                && Objects.equals(description, post.description);
+        return id == post.id;
     }
 
     @Override

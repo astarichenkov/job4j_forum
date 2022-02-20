@@ -23,7 +23,7 @@ public class PostControl {
     }
 
     @GetMapping({"/update"})
-    public String edit(@RequestParam("id") int id, Model model) {
+    public String edit(@RequestParam("id") Long id, Model model) {
         model.addAttribute("post", posts.findById(id));
         return "post/edit";
     }
