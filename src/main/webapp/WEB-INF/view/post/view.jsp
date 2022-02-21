@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -32,17 +33,29 @@
 </div>
 
 <div class="container pt-3">
-    <form action="<%=request.getContextPath()%>/save?id=${post.id}" method='POST'>
-        <div class="mb-3">
-            <label for="name" class="form-label">Имя</label>
-            <input type="text" class="form-control" name="name" id="name" value="${post.name}">
+    <p><c:out value="${post.name}"/></p>
+    <p><c:out value="${post.description}"/></p>
+
+
+    <c:forEach items="${comments}" var="comment">
+        <div class="card">
+            <div class="card-body">
+                <p> <fmt:formatDate value="${post.created.time}" type="date" dateStyle="short"/></p>
+                <p> <c:out value="${comment.text}"/></p>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="description" class="form-label">Описание</label>
-            <input type="text" class="form-control" name="description" id="description" value="${post.description}">
+    </c:forEach>
+
+
+    <form name='comment' action="<c:url value='/comment/save?id=${post.id}'/>" method='POST'>
+        <div class="form-group">
+            <label>Новое сообщение</label>
+            <input type="text" class="form-control" name="text" required>
         </div>
-        <button type="submit" class="btn btn-primary">Сохранить</button>
+        <button type="submit" class="btn btn-primary">Отправить</button>
     </form>
+
 </div>
+
 </body>
 </html>

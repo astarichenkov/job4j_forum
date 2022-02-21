@@ -16,6 +16,22 @@
 
 <body>
 <div class="container pt-3">
+    <div class="row">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="<%=request.getContextPath()%>/">Главная</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<%=request.getContextPath()%>/create">Добавить пост</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<%=request.getContextPath()%>/logout">${user.username} | Выйти</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="container pt-3">
     <form action="<%=request.getContextPath()%>/save" method='POST'>
         <div class="mb-3">
             <label for="name" class="form-label">Имя</label>

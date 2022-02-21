@@ -2,6 +2,7 @@ package ru.job4j.forum.model;
 
 import lombok.*;
 
+import javax.persistence.*;
 import java.util.Objects;
 
 @NoArgsConstructor
@@ -9,9 +10,12 @@ import java.util.Objects;
 @Getter
 @Setter
 @ToString
+@Entity
+@Table(name = "users")
 public class User {
-
-    private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @NonNull
     private String username;

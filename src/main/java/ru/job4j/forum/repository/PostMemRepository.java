@@ -1,12 +1,13 @@
 package ru.job4j.forum.repository;
 
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import ru.job4j.forum.model.Post;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 
-@Service
+@Repository
 public class PostMemRepository {
     private final AtomicLong id;
     private final Map<Long, Post> posts = new HashMap<>();

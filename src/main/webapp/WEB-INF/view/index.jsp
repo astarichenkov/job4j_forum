@@ -50,7 +50,7 @@
                     <tr>
                         <td><c:out value="${post.id}"/></td>
                         <td>
-                            <a href="<%=request.getContextPath()%>/update?id=${post.id}">
+                            <a href="<%=request.getContextPath()%>/view?id=${post.id}">
                                 <c:out value="${post.name}"/>
                             </a>
                         </td>

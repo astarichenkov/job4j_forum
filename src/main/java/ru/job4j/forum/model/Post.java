@@ -2,22 +2,34 @@ package ru.job4j.forum.model;
 
 import lombok.*;
 
-import java.util.Calendar;
-import java.util.Objects;
+import javax.persistence.*;
+import java.util.*;
 
 @NoArgsConstructor
-@RequiredArgsConstructor(staticName = "of")
 @Getter
 @Setter
-@ToString
+@Entity
+@Table(name = "posts")
 public class Post {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private long id;
-
-    @NonNull
     private String name;
     private String description;
     private Calendar created;
+
+    @OneToMany(cascade = CascadeType.DETACH, orphanRemoval = true)
+    private List<Comment> comments = new ArrayList<>();
+
+    public Post(String name) {
+        this.name = name;
+        this.created = new GregorianCalendar();
+    }
+
+    public void addComment(Comment comment) {
+        this.comments.add(comment);
+    }
 
     @Override
     public boolean equals(Object o) {
