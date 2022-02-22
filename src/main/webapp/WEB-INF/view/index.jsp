@@ -41,6 +41,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Имя</th>
                     <th scope="col">Описание</th>
+                    <th scope="col">Автор</th>
                     <th scope="col">Дата</th>
                 </tr>
                 </thead>
@@ -56,6 +57,7 @@
                         </td>
 
                         <td><c:out value="${post.description}"/></td>
+                        <td><c:out value="${post.user.username}"/></td>
                         <td><fmt:formatDate value="${post.created.time}" type="date" dateStyle="short"/></td>
                     </tr>
                 </c:forEach>

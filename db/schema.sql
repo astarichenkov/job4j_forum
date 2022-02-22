@@ -1,16 +1,17 @@
-create table posts
-(
-    id          serial primary key,
-    name        varchar(2000),
-    description text,
-    created     timestamp without time zone not null default now()
-);
-
 create table users
 (
     id       serial primary key,
     username varchar(2000),
     password varchar(2000)
+);
+
+create table posts
+(
+    id          serial primary key,
+    name        varchar(2000),
+    description text,
+    user_id     int references users(id),
+    created     timestamp without time zone not null default now()
 );
 
 create table comments

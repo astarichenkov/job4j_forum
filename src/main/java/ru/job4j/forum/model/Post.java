@@ -27,6 +27,10 @@ public class Post {
         this.created = new GregorianCalendar();
     }
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public void addComment(Comment comment) {
         this.comments.add(comment);
     }

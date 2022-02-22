@@ -25,4 +25,8 @@ public class Comment {
         this.text = text;
         this.created = new GregorianCalendar();
     }
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

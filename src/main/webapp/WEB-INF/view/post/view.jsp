@@ -40,6 +40,7 @@
     <c:forEach items="${comments}" var="comment">
         <div class="card">
             <div class="card-body">
+                <p><c:out value="${comment.user.username}"/></p>
                 <p> <fmt:formatDate value="${post.created.time}" type="date" dateStyle="short"/></p>
                 <p> <c:out value="${comment.text}"/></p>
             </div>

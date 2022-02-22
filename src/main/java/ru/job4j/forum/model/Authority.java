@@ -1,32 +1,23 @@
 package ru.job4j.forum.model;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @NoArgsConstructor
-@RequiredArgsConstructor(staticName = "of")
 @Getter
 @Setter
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "authorities")
+public class Authority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
-    @NonNull
-    private String username;
-
-    @NonNull
-    private String password;
-
-    @ManyToOne
-    @JoinColumn(name = "authority_id")
-    private Authority authority;
-
-    private boolean enabled;
+    private String authority;
 
     @Override
     public boolean equals(Object o) {
@@ -36,8 +27,8 @@ public class User {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        User user = (User) o;
-        return id == user.id;
+        Authority authority = (Authority) o;
+        return id == authority.id;
     }
 
     @Override
