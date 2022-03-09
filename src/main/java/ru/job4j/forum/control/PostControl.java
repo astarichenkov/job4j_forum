@@ -58,14 +58,14 @@ public class PostControl {
     }
 
     @PostMapping("/comment/save")
-    public String save(@RequestParam("id") Long id, @ModelAttribute Comment comment,
+    public String save(@RequestParam("post_id") Long postId, @ModelAttribute Comment comment,
                        RedirectAttributes attributes) {
-        Post post = posts.findById(id);
+        Post post = posts.findById(postId);
         comment = comments.save(comment);
         comment.setUser(getCurrentUser());
         post.addComment(comment);
         posts.save(post);
-        attributes.addAttribute("id", id);
+        attributes.addAttribute("id", postId);
         return "redirect:/view";
     }
 

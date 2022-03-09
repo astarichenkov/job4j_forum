@@ -100,7 +100,7 @@ public class PostControlTest {
         Mockito.doReturn(comment).when(comments).save(Mockito.any(Comment.class));
         this.mockMvc.perform(post("/comment/save")
                         .param("name", "Почем продаешь?")
-                        .param("id", "1"))
+                        .param("post_id", "1"))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection());
         ArgumentCaptor<Post> argument = ArgumentCaptor.forClass(Post.class);

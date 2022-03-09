@@ -48,7 +48,7 @@
     </c:forEach>
 
 
-    <form name='comment' action="<c:url value='/comment/save?id=${post.id}'/>" method='POST'>
+    <form name='comment' action="<c:url value='/comment/save?post_id=${post.id}'/>" method='POST'>
         <div class="form-group">
             <label>Новое сообщение</label>
             <input type="text" class="form-control" name="text" required>
