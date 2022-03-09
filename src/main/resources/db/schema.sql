@@ -24,7 +24,8 @@ create table comments
 (
     id      serial primary key,
     text    varchar(2000),
-    created timestamp without time zone not null default now()
+    created timestamp without time zone not null default now(),
+    user_id     int references users(id)
 );
 
 create table posts_comments

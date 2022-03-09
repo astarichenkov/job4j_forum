@@ -15,6 +15,20 @@
     <title>Форум</title>
 </head>
 
+<style>
+    .card {
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        margin-top: 10px;
+    }
+
+    label {
+        margin-bottom: 10px;
+    }
+</style>
+
 <body>
 <div class="container pt-3">
     <div class="row">
@@ -33,16 +47,23 @@
 </div>
 
 <div class="container pt-3">
-    <p><c:out value="${post.name}"/></p>
-    <p><c:out value="${post.description}"/></p>
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title"><c:out value="${post.name}"/></h5>
+        </div>
+        <div class="card-body">
+            <p class="card-text"><c:out value="${post.description}"/></p>
+        </div>
+    </div>
 
 
     <c:forEach items="${comments}" var="comment">
         <div class="card">
             <div class="card-body">
-                <p><c:out value="${comment.user.username}"/></p>
-                <p> <fmt:formatDate value="${post.created.time}" type="date" dateStyle="short"/></p>
-                <p> <c:out value="${comment.text}"/></p>
+                <h5 class="card-title"><c:out value="${comment.user.username}"/>,
+                <fmt:formatDate value="${post.created.time}" type="date" dateStyle="short"/>
+                </h5>
+                <p class="card-text"><c:out value="${comment.text}"/></p>
             </div>
         </div>
     </c:forEach>
